@@ -20,8 +20,8 @@ public class PhotoViewer extends CordovaPlugin {
 
     public static final int PERMISSION_DENIED_ERROR = 20;
 
-    public static final String WRITE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-    public static final String READ = Manifest.permission.READ_EXTERNAL_STORAGE;
+//    public static final String WRITE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+//    public static final String READ = Manifest.permission.READ_EXTERNAL_STORAGE;
 
     public static final int REQ_CODE = 0;
 
@@ -34,19 +34,19 @@ public class PhotoViewer extends CordovaPlugin {
             this.args = args;
             this.callbackContext = callbackContext;
 
-            if (cordova.hasPermission(READ) && cordova.hasPermission(WRITE)) {
+            //if (cordova.hasPermission(READ) && cordova.hasPermission(WRITE)) {
                 this.launchActivity();
-            } else {
-                this.getPermission();
-            }
+            //} else {
+            //    this.getPermission();
+            //}
             return true;
         }
         return false;
     }
 
-    protected void getPermission() {
-        cordova.requestPermissions(this, REQ_CODE, new String[]{WRITE, READ});
-    }
+//     protected void getPermission() {
+//         cordova.requestPermissions(this, REQ_CODE, new String[]{WRITE, READ});
+//     }
 
     protected void launchActivity() throws JSONException {
         Intent i = new Intent(this.cordova.getActivity(), com.sarriaroman.PhotoViewer.PhotoActivity.class);
